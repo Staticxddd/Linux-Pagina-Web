@@ -17,11 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await respuesta.json();
 
-      const sprite = data.sprites.front_default;
+      const esShiny = Math.random() < 0.2; 
+      const sprite = esShiny ? data.sprites.front_shiny : data.sprites.front_default;
 
       pokemonInfo.innerHTML = `
-        <h2>${data.name.toUpperCase()}</h2>
-        ${sprite ? `<img src="${sprite}" alt="${data.name}">` : '<p>No hay imagen disponible</p>'}
+        <h2>${data.name.toUpperCase()} ${esShiny ? 'Shiny' : ''}</h2>
+        ${sprite ? `<img src="${sprite}" alt="${data.name}">` : '<p>No hay imagen</p>'}
         <p><strong>Altura:</strong> ${data.height / 10} m</p>
         <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
         <p><strong>Tipo(s):</strong> ${data.types.map(t => t.type.name).join(', ')}</p>
