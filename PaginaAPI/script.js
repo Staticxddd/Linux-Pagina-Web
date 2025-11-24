@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function obtenerPokemon(nombre) {
     try {
       const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
-      if (!respuesta.ok) throw new Error('Pokémon no encontrado');
+      if (!respuesta.ok) throw new Error('Pokemon no encontrado');
 
       const data = await respuesta.json();
 
